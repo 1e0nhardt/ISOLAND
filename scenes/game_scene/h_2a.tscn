@@ -1,0 +1,102 @@
+[gd_scene load_steps=21 format=3 uid="uid://671k7ffwc6y7"]
+
+[ext_resource type="Texture2D" uid="uid://h7ooyhk4tsah" path="res://assets/H2A/roomsignBG.png" id="1_hexxt"]
+[ext_resource type="Script" path="res://scenes/game_scene/h_2a.gd" id="2_hdsvo"]
+[ext_resource type="PackedScene" uid="uid://crw3kw3uhd8xo" path="res://scenes/components/to_other_scene_area.tscn" id="2_hgbfm"]
+[ext_resource type="Texture2D" uid="uid://dr44j4ioedshk" path="res://assets/H2A/SS_01.png" id="3_ebrp0"]
+[ext_resource type="Texture2D" uid="uid://dt7465vudwq4j" path="res://assets/H2A/SS_02.png" id="4_ndfkg"]
+[ext_resource type="Texture2D" uid="uid://ckmn5sjj4rbkl" path="res://assets/H2A/gearbg.png" id="4_vbbwx"]
+[ext_resource type="Texture2D" uid="uid://bxlkfjlng7b3d" path="res://assets/H2A/SS_03.png" id="5_028r4"]
+[ext_resource type="Texture2D" uid="uid://bwjetekiu73eq" path="res://assets/H2A/gear.png" id="5_dawfm"]
+[ext_resource type="Texture2D" uid="uid://dqkn56wylj4hs" path="res://assets/H2A/SS_04.png" id="6_aram3"]
+[ext_resource type="Texture2D" uid="uid://bfmccqj3x0ce5" path="res://assets/H2A/SS_05.png" id="7_ovu5v"]
+[ext_resource type="Texture2D" uid="uid://ce6tdpnsyq3wq" path="res://assets/H2A/SS_07.png" id="7_p8asi"]
+[ext_resource type="Texture2D" uid="uid://cxhg0afninjjl" path="res://assets/H2A/SS_06.png" id="8_ymwwe"]
+[ext_resource type="Texture2D" uid="uid://djj875av6us6k" path="res://assets/H2A/SS_08.png" id="10_3fgoi"]
+[ext_resource type="Texture2D" uid="uid://bdjxoedwlqugx" path="res://assets/H2A/SS_09.png" id="11_ru266"]
+[ext_resource type="Texture2D" uid="uid://cfeljfr6nps4j" path="res://assets/H2A/SS_10.png" id="12_f633q"]
+[ext_resource type="Texture2D" uid="uid://djjl4rqix0py7" path="res://assets/H2A/SS_11.png" id="13_sma83"]
+[ext_resource type="Texture2D" uid="uid://cfiyvktbvn4ug" path="res://assets/H2A/SS_12.png" id="14_xm544"]
+[ext_resource type="Texture2D" uid="uid://jddmaigmxph1" path="res://assets/H2A/CIRCLELINE.png" id="15_mdk6i"]
+[ext_resource type="PackedScene" uid="uid://c6l7ovsi2jjpj" path="res://scenes/components/circle_node.tscn" id="20_u38cs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0ie4"]
+radius = 73.0616
+
+[node name="H2A" type="Sprite2D"]
+position = Vector2(960, 540)
+texture = ExtResource("1_hexxt")
+script = ExtResource("2_hdsvo")
+line_texture = ExtResource("15_mdk6i")
+
+[node name="ToH2" parent="." instance=ExtResource("2_hgbfm")]
+scene_path = "res://scenes/game_scene/h_2.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToH2"]
+position = Vector2(-803, -432)
+shape = SubResource("CircleShape2D_s0ie4")
+
+[node name="Gearbg" type="Sprite2D" parent="."]
+position = Vector2(711, -212)
+texture = ExtResource("4_vbbwx")
+
+[node name="Gear" type="TextureButton" parent="Gearbg"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -135.5
+offset_right = -35.5
+offset_bottom = -32.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_dawfm")
+
+[node name="SS00" parent="." instance=ExtResource("20_u38cs")]
+position = Vector2(-39, 384)
+
+[node name="SS01" parent="." instance=ExtResource("20_u38cs")]
+position = Vector2(-337, 238)
+false_texture = ExtResource("14_xm544")
+true_texture = ExtResource("3_ebrp0")
+true_index = 1
+current_index = 6
+
+[node name="SS02" parent="." instance=ExtResource("20_u38cs")]
+position = Vector2(-409, -68)
+false_texture = ExtResource("13_sma83")
+true_texture = ExtResource("4_ndfkg")
+true_index = 2
+current_index = 5
+
+[node name="SS03" parent="." instance=ExtResource("20_u38cs")]
+position = Vector2(-206, -330)
+false_texture = ExtResource("12_f633q")
+true_texture = ExtResource("5_028r4")
+true_index = 3
+current_index = 4
+
+[node name="SS04" parent="." instance=ExtResource("20_u38cs")]
+position = Vector2(146, -325)
+false_texture = ExtResource("11_ru266")
+true_texture = ExtResource("6_aram3")
+true_index = 4
+current_index = 3
+
+[node name="SS05" parent="." instance=ExtResource("20_u38cs")]
+position = Vector2(320, -77)
+false_texture = ExtResource("10_3fgoi")
+true_texture = ExtResource("7_ovu5v")
+true_index = 5
+current_index = 2
+
+[node name="SS06" parent="." instance=ExtResource("20_u38cs")]
+position = Vector2(250, 244)
+false_texture = ExtResource("7_p8asi")
+true_texture = ExtResource("8_ymwwe")
+true_index = 6
+current_index = 1
+
+[connection signal="pressed" from="Gearbg/Gear" to="." method="_on_gear_pressed"]

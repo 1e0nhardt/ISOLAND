@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfj5yicap48ke"]
+
+[ext_resource type="Texture2D" uid="uid://cvl3ciou42q2x" path="res://assets/H1/H1.png" id="1_o60iu"]
+[ext_resource type="PackedScene" uid="uid://crw3kw3uhd8xo" path="res://scenes/components/to_other_scene_area.tscn" id="2_cjl0u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hweob"]
+radius = 55.0091
+
+[node name="H1" type="Sprite2D"]
+position = Vector2(960, 540)
+texture = ExtResource("1_o60iu")
+
+[node name="ToH2" parent="." instance=ExtResource("2_cjl0u")]
+scene_path = "res://scenes/game_scene/h_2.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToH2"]
+position = Vector2(839, -156)
+shape = SubResource("CircleShape2D_hweob")

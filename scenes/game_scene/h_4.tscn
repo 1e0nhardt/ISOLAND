@@ -1,0 +1,55 @@
+[gd_scene load_steps=13 format=3 uid="uid://0mtc2jwpr0a3"]
+
+[ext_resource type="Texture2D" uid="uid://bjawk5qfr2u0u" path="res://assets/H4/H4.png" id="1_dts4a"]
+[ext_resource type="Script" path="res://scenes/game_scene/h_4.gd" id="2_4k842"]
+[ext_resource type="PackedScene" uid="uid://crw3kw3uhd8xo" path="res://scenes/components/to_other_scene_area.tscn" id="2_24mkc"]
+[ext_resource type="PackedScene" uid="uid://ydrcbkv1qm1a" path="res://scenes/components/item_interactable.tscn" id="3_50ets"]
+[ext_resource type="Texture2D" uid="uid://b16wnf5jcaunu" path="res://assets/H4/mailBox_close.png" id="4_26cur"]
+[ext_resource type="Resource" uid="uid://b6rxnlcr8mhod" path="res://resources/key.tres" id="4_fqw1o"]
+[ext_resource type="PackedScene" uid="uid://bhld7705jd12u" path="res://scenes/components/collectable.tscn" id="7_3wojd"]
+[ext_resource type="Resource" uid="uid://bbf6uttoja21v" path="res://resources/mail_piece.tres" id="8_dtmhf"]
+[ext_resource type="Texture2D" uid="uid://tfv6dnt4p6ql" path="res://assets/H4/mail_piece.png" id="8_iv84s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yffb"]
+size = Vector2(253, 404.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxso4"]
+size = Vector2(276, 247)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kb1qu"]
+size = Vector2(71.5, 138)
+
+[node name="H4" type="Sprite2D"]
+position = Vector2(960, 540)
+texture = ExtResource("1_dts4a")
+script = ExtResource("2_4k842")
+
+[node name="ToH2" parent="." instance=ExtResource("2_24mkc")]
+scene_path = "res://scenes/game_scene/h_2.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToH2"]
+position = Vector2(324.5, -161.125)
+shape = SubResource("RectangleShape2D_3yffb")
+
+[node name="MailBox" type="Sprite2D" parent="."]
+position = Vector2(887, 2)
+texture = ExtResource("4_26cur")
+
+[node name="MailboxArea" parent="." instance=ExtResource("3_50ets")]
+item = ExtResource("4_fqw1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MailboxArea"]
+position = Vector2(824, -198.5)
+shape = SubResource("RectangleShape2D_bxso4")
+
+[node name="MailPieceArea" parent="." instance=ExtResource("7_3wojd")]
+visible = false
+item = ExtResource("8_dtmhf")
+
+[node name="MailPiece" type="Sprite2D" parent="MailPieceArea"]
+position = Vector2(831, -208)
+texture = ExtResource("8_iv84s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MailPieceArea"]
+position = Vector2(830.75, -215)
+shape = SubResource("RectangleShape2D_kb1qu")

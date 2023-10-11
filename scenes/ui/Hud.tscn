@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ist3ww7qwsm"]
+
+[ext_resource type="Script" path="res://scenes/ui/Hud.gd" id="1_o87y2"]
+[ext_resource type="PackedScene" uid="uid://bjlvcy1ue4knl" path="res://scenes/ui/item_ui.tscn" id="1_rqopf"]
+[ext_resource type="Texture2D" uid="uid://d0o3u44x18kum" path="res://assets/UI/menu.png" id="3_3bc62"]
+
+[node name="HUD" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_o87y2")
+
+[node name="ItemUI" parent="." instance=ExtResource("1_rqopf")]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -161.0
+offset_top = 29.0
+offset_right = -56.0
+offset_bottom = 135.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("3_3bc62")
+texture_pressed = ExtResource("3_3bc62")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

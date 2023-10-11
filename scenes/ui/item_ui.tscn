@@ -1,0 +1,139 @@
+[gd_scene load_steps=16 format=3 uid="uid://bjlvcy1ue4knl"]
+
+[ext_resource type="Texture2D" uid="uid://dowufyb184s72" path="res://assets/UI/道具栏的左箭头.png" id="1_eexpj"]
+[ext_resource type="Texture2D" uid="uid://bxg7e4rfwqru1" path="res://assets/UI/道具指示文字背景黑块.png" id="1_u7gge"]
+[ext_resource type="Script" path="res://scenes/ui/item_ui.gd" id="1_xl2n1"]
+[ext_resource type="Texture2D" uid="uid://up3li7fg3kbf" path="res://assets/UI/道具栏.png" id="2_krass"]
+[ext_resource type="Texture2D" uid="uid://c8bv5cr025dx4" path="res://assets/UI/道具栏的左箭头按下.png" id="3_633pj"]
+[ext_resource type="Texture2D" uid="uid://ddc47lh471pld" path="res://assets/H2/key_prop.png" id="3_main0"]
+[ext_resource type="Texture2D" uid="uid://beb312hqy0ea8" path="res://assets/UI/道具栏的右箭头.png" id="3_yfwgg"]
+[ext_resource type="Texture2D" uid="uid://ewefwygy6od0" path="res://assets/UI/道具栏的左箭头不可用.png" id="4_k8iqp"]
+[ext_resource type="Texture2D" uid="uid://biwxabskvb4b2" path="res://assets/UI/抓着道具的手.png" id="8_2gccl"]
+[ext_resource type="Texture2D" uid="uid://dfpqb8j3ugsfy" path="res://assets/UI/道具栏的右箭头按下.png" id="8_kk7yb"]
+[ext_resource type="Texture2D" uid="uid://umo0bxr3uvmi" path="res://assets/UI/道具栏的右箭头不可用.png" id="9_2oax8"]
+
+[sub_resource type="Animation" id="Animation_3jaq4"]
+resource_name = "default"
+length = 1.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Label:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.3, 1.6),
+"transitions": PackedFloat32Array(1, 0.241485, 1, 2.2974),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y4dae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mtmk"]
+_data = {
+"RESET": SubResource("Animation_y4dae"),
+"default": SubResource("Animation_3jaq4")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jsj2l"]
+texture = ExtResource("1_u7gge")
+texture_margin_left = 46.0
+texture_margin_top = 36.0
+texture_margin_right = 49.0
+texture_margin_bottom = 37.0
+
+[node name="ItemUI" type="MarginContainer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -378.0
+offset_top = -337.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+script = ExtResource("1_xl2n1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6mtmk")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.992157, 0.984314, 0.984314, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_jsj2l")
+text = "钥匙"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="LeftArrowButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("1_eexpj")
+texture_pressed = ExtResource("3_633pj")
+texture_disabled = ExtResource("4_k8iqp")
+stretch_mode = 4
+
+[node name="ItemButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("2_krass")
+stretch_mode = 4
+
+[node name="Item" type="Sprite2D" parent="VBoxContainer/HBoxContainer/ItemButton"]
+unique_name_in_owner = true
+position = Vector2(111, 104)
+texture = ExtResource("3_main0")
+
+[node name="Hand" type="Sprite2D" parent="VBoxContainer/HBoxContainer/ItemButton"]
+unique_name_in_owner = true
+position = Vector2(151, 155)
+texture = ExtResource("8_2gccl")
+
+[node name="RightArrowButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_yfwgg")
+texture_pressed = ExtResource("8_kk7yb")
+texture_disabled = ExtResource("9_2oax8")
+stretch_mode = 4
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LeftArrowButton" to="." method="_on_left_arrow_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightArrowButton" to="." method="_on_right_arrow_button_pressed"]

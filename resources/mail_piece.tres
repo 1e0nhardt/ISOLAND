@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bbf6uttoja21v"]
+
+[ext_resource type="Script" path="res://resources/Item.gd" id="1_vl0l7"]
+[ext_resource type="Texture2D" uid="uid://bc65dpg78cts6" path="res://assets/H4/mail_prop.png" id="2_h42uf"]
+
+[resource]
+script = ExtResource("1_vl0l7")
+name = "mail_piece"
+description = "信件碎片"
+texture = ExtResource("2_h42uf")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bcyuco4a3c4i8"]
+
+[ext_resource type="Script" path="res://resources/Item.gd" id="1_otmr6"]
+[ext_resource type="Texture2D" uid="uid://biwxabskvb4b2" path="res://assets/UI/抓着道具的手.png" id="2_ufbsb"]
+
+[resource]
+script = ExtResource("1_otmr6")
+name = "hand"
+description = "手"
+texture = ExtResource("2_ufbsb")

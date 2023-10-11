@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://1rwhqri6kx5b"]
+
+[ext_resource type="Shader" path="res://scenes/autoload/scene_transition.gdshader" id="1_d6kkf"]
+[ext_resource type="Script" path="res://scenes/autoload/scene_transition.gd" id="1_j03k8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kngcu"]
+shader = ExtResource("1_d6kkf")
+shader_parameter/percent = 0.0
+shader_parameter/screen_uv_scale = 1.0
+
+[node name="SceneTransition" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_j03k8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_kngcu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4epcnt4i7heh"]
+
+[ext_resource type="Script" path="res://scenes/components/dialog_box.gd" id="1_gh8dc"]
+[ext_resource type="Texture2D" uid="uid://bbgu6tebeclos" path="res://assets/UI/对话框点9图.9.png" id="1_ksmg6"]
+[ext_resource type="Texture2D" uid="uid://bne6ley134spc" path="res://assets/UI/对话框把手.png" id="2_bgyj4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ikt83"]
+texture = ExtResource("1_ksmg6")
+texture_margin_left = 28.0
+texture_margin_top = 32.0
+texture_margin_right = 26.0
+texture_margin_bottom = 25.0
+region_rect = Rect2(-0.5, -0.5, 144, 132)
+
+[node name="DialogBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gh8dc")
+
+[node name="Button" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -297.0
+offset_right = 479.0
+grow_vertical = 0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxTexture_ikt83")
+text = "大学之道，在明明德，在亲民，在止于至善。忽如一夜春风来，千树万树梨花开。"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="Button"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Button/Control"]
+position = Vector2(10, 32)
+texture = ExtResource("2_bgyj4")
+flip_h = true
+
+[connection signal="gui_input" from="Button" to="." method="_on_button_gui_input"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch151jmnv1itj"]
+
+[ext_resource type="Texture2D" uid="uid://bw67t4ojohumd" path="res://assets/H3/H3.png" id="1_xp86e"]
+[ext_resource type="PackedScene" uid="uid://crw3kw3uhd8xo" path="res://scenes/components/to_other_scene_area.tscn" id="2_w8cmm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h088s"]
+size = Vector2(294, 372)
+
+[node name="H3" type="Sprite2D"]
+position = Vector2(960, 540)
+texture = ExtResource("1_xp86e")
+
+[node name="ToH2" parent="." instance=ExtResource("2_w8cmm")]
+scene_path = "res://scenes/game_scene/h_2.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToH2"]
+position = Vector2(811, 354)
+shape = SubResource("RectangleShape2D_h088s")
