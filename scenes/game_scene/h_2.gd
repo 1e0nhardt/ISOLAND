@@ -46,6 +46,7 @@ func show_way():
 
 
 func show_dialog():
+    AudioManager.stop_playing()
     dialog_index += 1
 
     if !dialog_flag:
@@ -60,6 +61,7 @@ func show_dialog():
 
     dialog_label.text = dialogs[dialog_index]
     dialog_box.animate_dialog()
+    AudioManager.play_gibberish(dialogs[dialog_index])
 
 
 func _on_granny_input_event(viewport:Node, event:InputEvent, shape_idx:int):

@@ -16,11 +16,11 @@ var empty_node: CircleNode
 
 
 func _enter_tree():
-    BgmManager.change_bgm(1)
+    AudioManager.change_bgm(1)
 
 
 func _exit_tree():
-    BgmManager.change_bgm(0)
+    AudioManager.change_bgm(0)
 
 
 func _ready():

@@ -25,6 +25,7 @@ func transition_out():
 
 
 func transition_to_scene(scene_path: String):
+    AudioManager.stop_playing()
     transition_in()
     get_tree().change_scene_to_file(scene_path)
     transition_out()
