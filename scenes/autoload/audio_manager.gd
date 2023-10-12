@@ -21,12 +21,16 @@ const AUDIO_LOOK_UP = {
 @onready var bgm_player = %BgmPlayer
 @onready var gibberish_player = %GibberishPlayer
 
-var converter_path = ProjectSettings.globalize_path("res://tools/convert_text_to_pinyin.exe")
+var DIR = OS.get_executable_path().get_base_dir()
+var converter_path = DIR.path_join("tools/convert_text_to_pinyin.exe")
 var pinyin_content: Array = []
 var stop_flag = false
 
 
 func _ready():
+    if !OS.has_feature("standalone"): # if NOT exported version
+        converter_path = ProjectSettings.globalize_path("res://tools/convert_text_to_pinyin.exe")
+        
     change_bgm(0)
 
 
